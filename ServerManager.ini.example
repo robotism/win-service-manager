@@ -1,0 +1,22 @@
+[config]
+auto-restart=3000
+
+
+[service.mariadb]
+path=D:\test\mariadb
+exec=.\bin\mysqld.exe
+args=--defaults-file="my.ini" --console
+show-window=false
+
+[service.redis]
+path=D:\test\redis
+exec=redis-server.exe
+args=redis.windows.conf
+show-window=false
+
+[service.app]
+path=D:\test\app
+exec=..\jre\bin\java.exe
+args=-jar app.jar --server.port=80 --spring.profiles.active=release
+link=http://localhost
+show-window=false
